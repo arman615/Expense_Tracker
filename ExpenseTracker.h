@@ -1,22 +1,22 @@
-#ifndef EXPENSE_H
-#define EXPENSE_H
+#ifndef EXPENSETRACKER_H
+#define EXPENSETRACKER_H
 
+#include <vector>
 #include <string>
+#include "Expense.h"
 
-class Expense {
+class ExpenseTracker {
 private:
-    std::string category;
-    double amount;
-    std::string description;
-    std::string dateTime;
+    std::vector<Expense> expenses;
+    std::vector<std::string> categories;
 
 public:
-    Expense(const std::string& category, double amount, const std::string& description, const std::string& dateTime);
-
-    const std::string& getCategory() const;
-    double getAmount() const;
-    const std::string& getDescription() const;
-    const std::string& getDateTime() const;
+    void addExpense(const std::string& category, double amount, const std::string& description, const std::string& dateTime);
+    void printAllExpenses() const;
+    void generateCategorySummaries() const;
+    void generateWeeklyReport() const;
+    void generateMonthlyReport() const;
+    void saveReportsToFile() const;
 };
 
-#endif // EXPENSE_H
+#endif // EXPENSETRACKER_H
